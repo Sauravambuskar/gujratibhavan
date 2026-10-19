@@ -4,19 +4,21 @@ const primaryNav = document.querySelector('#primary-navigation');
 const heroSection = document.querySelector('#home');
 const setHeroVisibility = (isVisible) => document.body.classList.toggle('hero-in-view', isVisible);
 
-const heroBounds = heroSection.getBoundingClientRect();
-setHeroVisibility(heroBounds.bottom > 0 && heroBounds.top < window.innerHeight);
+if (heroSection) {
+  const heroBounds = heroSection.getBoundingClientRect();
+  setHeroVisibility(heroBounds.bottom > 0 && heroBounds.top < window.innerHeight);
 
-if ('IntersectionObserver' in window) {
-  const heroObserver = new IntersectionObserver(([entry]) => {
-    setHeroVisibility(entry.isIntersecting);
-  }, { threshold: 0.02 });
-  heroObserver.observe(heroSection);
-} else {
-  window.addEventListener('scroll', () => {
-    const bounds = heroSection.getBoundingClientRect();
-    setHeroVisibility(bounds.bottom > 0 && bounds.top < window.innerHeight);
-  }, { passive: true });
+  if ('IntersectionObserver' in window) {
+    const heroObserver = new IntersectionObserver(([entry]) => {
+      setHeroVisibility(entry.isIntersecting);
+    }, { threshold: 0.02 });
+    heroObserver.observe(heroSection);
+  } else {
+    window.addEventListener('scroll', () => {
+      const bounds = heroSection.getBoundingClientRect();
+      setHeroVisibility(bounds.bottom > 0 && bounds.top < window.innerHeight);
+    }, { passive: true });
+  }
 }
 
 const closeNavigation = () => {
@@ -114,6 +116,7 @@ let selectedGalleryCategory = 'all';
 let galleryExpanded = false;
 
 const updateGallery = () => {
+  if (!galleryItems.length) return;
   const matchingItems = [...galleryItems].filter((item) => (
     selectedGalleryCategory === 'all' || item.dataset.galleryCategory === selectedGalleryCategory
   ));
@@ -125,10 +128,12 @@ const updateGallery = () => {
     item.hidden = !shouldShow;
   });
 
-  document.querySelector('.gallery-wall').classList.toggle('is-filtered', selectedGalleryCategory !== 'all');
-  galleryCount.textContent = matchingItems.length;
-  galleryMore.textContent = `Show all ${matchingItems.length} photos`;
-  galleryMore.hidden = !(shouldLimit && matchingItems.length > 8);
+  document.querySelector('.gallery-wall')?.classList.toggle('is-filtered', selectedGalleryCategory !== 'all');
+  if (galleryCount) galleryCount.textContent = matchingItems.length;
+  if (galleryMore) {
+    galleryMore.textContent = `Show all ${matchingItems.length} photos`;
+    galleryMore.hidden = !(shouldLimit && matchingItems.length > 8);
+  }
 };
 
 galleryFilters.forEach((button) => {
@@ -146,7 +151,7 @@ galleryFilters.forEach((button) => {
   });
 });
 
-galleryMore.addEventListener('click', () => {
+galleryMore?.addEventListener('click', () => {
   const firstNewItem = [...galleryItems].find((item) => item.hidden);
   galleryExpanded = true;
   updateGallery();
@@ -158,12 +163,13 @@ mobileGallery.addEventListener('change', updateGallery);
 updateGallery();
 
 const lightbox = document.querySelector('#lightbox');
-const lightboxImage = lightbox.querySelector('img');
-const lightboxClose = lightbox.querySelector('.lightbox__close');
+const lightboxImage = lightbox?.querySelector('img');
+const lightboxClose = lightbox?.querySelector('.lightbox__close');
 let lightboxTrigger = null;
 
 document.querySelectorAll('[data-lightbox]').forEach((button) => {
   button.addEventListener('click', () => {
+    if (!lightbox || !lightboxImage) return;
     lightboxTrigger = button;
     lightboxImage.src = button.dataset.lightbox;
     lightboxImage.alt = button.querySelector('img').alt;
@@ -171,14 +177,15 @@ document.querySelectorAll('[data-lightbox]').forEach((button) => {
   });
 });
 
-lightboxClose.addEventListener('click', () => lightbox.close());
-lightbox.addEventListener('click', (event) => {
+lightboxClose?.addEventListener('click', () => lightbox.close());
+lightbox?.addEventListener('click', (event) => {
   if (event.target === lightbox) lightbox.close();
 });
-lightbox.addEventListener('close', () => {
+lightbox?.addEventListener('close', () => {
   lightboxImage.removeAttribute('src');
   lightboxImage.alt = '';
   lightboxTrigger?.focus();
 });
 
-document.querySelector('#year').textContent = new Date().getFullYear();
+const year = document.querySelector('#year');
+if (year) year.textContent = new Date().getFullYear();
