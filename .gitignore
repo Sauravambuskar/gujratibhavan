@@ -7,8 +7,8 @@ plan.md
 # Raw source archives and unprocessed photo folders
 *.zip
 *.tgz
-Food/
-Hoete images/
+/Food/
+/Hoete images/
 
 # Large source images that have optimized web versions
 assets/images/brand-logo-original.png
