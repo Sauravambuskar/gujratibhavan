@@ -1,0 +1,21 @@
+# Local QA and generated deployment output
+tmp/
+dist/
+.server.pid
+plan.md
+
+# Raw source archives and unprocessed photo folders
+*.zip
+*.tgz
+Food/
+Hoete images/
+
+# Large source images that have optimized web versions
+assets/images/brand-logo-original.png
+assets/images/food/bhojanalaya-drinks-enhanced.png
+assets/images/food/bhojanalaya-menu-enhanced.png
+assets/images/food/gujarati-thali-generated.png
+
+# OS/editor files
+.DS_Store
+Thumbs.db
