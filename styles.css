@@ -295,7 +295,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .footer__brand img { width: 180px; height: 116px; object-fit: contain; object-position: left center; padding: 4px; border-radius: 10px; background: white; }
 .footer__brand p { max-width: 330px; margin: 20px 0 0; color: #a99993; font-size: 13px; }
 .site-footer h2 { margin: 0 0 18px; color: white; font-family: var(--serif); font-size: 16px; }
-.site-footer a { display: block; width: fit-content; margin: 8px 0; color: #bbaaA3; font-size: 13px; }
+.site-footer a { display: block; width: fit-content; max-width: 100%; margin: 8px 0; color: #bbaaA3; font-size: 13px; overflow-wrap: anywhere; }
 .site-footer a:hover { color: var(--gold-light); }
 .site-footer address { color: #bbaaa3; font-size: 13px; font-style: normal; }
 .footer__bottom { display: flex; justify-content: space-between; gap: 20px; padding-block: 18px; border-top: 1px solid rgba(255,255,255,.08); }
