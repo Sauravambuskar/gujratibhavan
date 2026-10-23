@@ -1,0 +1,12 @@
+*.zip
+*.tgz
+Food/
+Hoete images/
+tmp/
+dist/
+.openai/
+.server.pid
+plan.md
+README.md
+assets/images/brand-logo-original.png
+assets/images/food/*.png

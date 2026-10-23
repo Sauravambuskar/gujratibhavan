@@ -19,3 +19,6 @@ assets/images/food/gujarati-thali-generated.png
 # OS/editor files
 .DS_Store
 Thumbs.db
+
+# Vercel CLI link
+.vercel/

@@ -1,0 +1,11 @@
+{
+  "name": "Gujarat Bhavan Rameswaram",
+  "short_name": "Gujarat Bhavan",
+  "description": "Gujarati dharamshala with AC & non-AC rooms and a pure vegetarian Bhojanalaya near Ramanathaswamy Temple, Rameswaram.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffdf8",
+  "theme_color": "#7b1718",
+  "lang": "en-IN",
+  "icons": [{ "src": "/assets/images/favicon.png", "sizes": "256x256", "type": "image/png" }]
+}
