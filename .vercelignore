@@ -1,7 +1,12 @@
 *.zip
 *.tgz
-Food/
-Hoete images/
+# The raw source folders are already excluded by .gitignore. Keeping
+# similarly named rules here caused assets/images/food/ to be omitted
+# from Windows-built Vercel deployments.
+/Food/
+/Hoete images/
+!/assets/images/food/
+!/assets/images/food/**
 tmp/
 dist/
 .openai/
