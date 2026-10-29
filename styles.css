@@ -301,6 +301,9 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .footer__bottom { display: flex; justify-content: space-between; gap: 20px; padding-block: 18px; border-top: 1px solid rgba(255,255,255,.08); }
 .footer__bottom p { margin: 0; color: #8d7e79; font-size: 11px; }
 
+.whatsapp-chat { position: fixed; z-index: 46; right: max(22px, env(safe-area-inset-right)); bottom: max(22px, env(safe-area-inset-bottom)); display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 13px 18px; border: 1px solid rgba(255, 255, 255, .2); border-radius: 999px; color: white; background: var(--green); box-shadow: 0 16px 38px rgba(20, 80, 47, .3); font-size: 14px; font-weight: 800; line-height: 1; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
+.whatsapp-chat:hover { transform: translateY(-3px); background: #1d613a; box-shadow: 0 20px 44px rgba(20, 80, 47, .36); }
+.whatsapp-chat svg { width: 23px; height: 23px; flex: 0 0 auto; }
 .mobile-actions { display: none; }
 .lightbox { width: min(960px, calc(100% - 30px)); max-width: none; padding: 0; border: 0; border-radius: 20px; background: #17100f; box-shadow: 0 30px 100px rgba(0,0,0,.55); }
 .lightbox::backdrop { background: rgba(20, 12, 11, .82); backdrop-filter: blur(8px); }
@@ -380,6 +383,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 @media (max-width: 640px) {
   :root { --container: calc(100% - 28px); --radius: 17px; }
   body { padding-bottom: 66px; }
+  .whatsapp-chat { display: none; }
   .hero { padding-top: 44px; }
   .hero h1 { font-size: clamp(38px, 11vw, 52px); }
   .hero__lead { font-size: 16px; }
